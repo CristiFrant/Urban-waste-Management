@@ -1,0 +1,16 @@
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <a mat-tab-link *ngFor="let tab of tabs" (click)="activeTab = tab.link" [active]="activeTab == tab.link"
+    [routerLink]="tab.link">{{tab.name}}</a>
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<nav>
+  <button routerLink="/login">Login</button>
+  <button routerLink="/home">Home</button>
+</nav>
+
+<router-outlet></router-outlet>

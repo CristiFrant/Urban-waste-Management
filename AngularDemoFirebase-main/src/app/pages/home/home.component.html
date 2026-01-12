@@ -1,0 +1,62 @@
+<div fxLayout="row">
+    <div fxFlex="50%" fxLayout="column">
+        <mat-list>
+            <mat-list-item>
+                <span class="label">Firebase {{isConnected ? "connected" : "disconnected"}}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button color="primary" class="full-w" (click)="connectFirebase()">Connect</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button color="primary" class="full-w" (click)="addListItem()">Add
+                    entry</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button color="primary" class="full-w" (click)="removeItems()">Clear entries</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-raised-button color="accent" class="full-w" routerLink="/map">
+                    🗺️ Deschide Harta GIS
+                </button>
+            </mat-list-item>
+        </mat-list>
+        <mat-card class="admin-card">
+  <mat-card-header>
+    <mat-card-title>Panou Administrare Date</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content fxLayout="column" fxLayoutGap="15px" style="margin-top: 20px;">
+    
+    <button mat-raised-button color="primary" (click)="gasesteMagazine()">
+      🔍 1. Caută Magazine (ArcGIS Locator)
+    </button>
+
+    <button mat-raised-button color="accent" (click)="descarcaCSV()" [disabled]="magazineGasite.length === 0">
+      💾 2. Descarcă CSV Local
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <div class="upload-section">
+      <p><strong>3. Încarcă CSV în Firebase:</strong></p>
+      <input type="file" (change)="onFileSelect($event)" accept=".csv">
+    </div>
+
+  </mat-card-content>
+</mat-card>
+    </div>
+    <div fxFlex="50%" fxLayout="column" class="scrollable">
+        <mat-list>
+            <mat-list-item>
+                <span class="label">Database entries</span>
+            </mat-list-item>
+            <mat-list-item *ngFor="let item of listItems">
+                <span>{{item.val}}</span>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

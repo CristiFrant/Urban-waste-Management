@@ -1,0 +1,19 @@
+.map-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 64px); // Scădem înălțimea toolbar-ului dacă ai unul
+}
+
+.esri-view {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10; // Să stea deasupra hărții
+}
